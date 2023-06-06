@@ -1,21 +1,45 @@
 #!/bin/bash
+
+PURPLE='0;35'
+NC='\033[0m' 
+VERSAO=11
+
+echo  "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Olá, serei seu assistente para instalação do Java!;"
+echo  "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Verificando aqui se você possui o Java instalado...;"
+sleep 2
+
 java -version
 if [ $? -eq 0 ];
 then
-        echo "java instalado"
-        cd Java-Jar
-        if [ $? -eq 0 ];
-        then
-                java -jar projeto-individual-1.0-SNAPSHOT.jar
-        fi
+	echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Você já tem o java instalado!!!"
+	cd Java-Jar
+	if [ $? -eq 0 ];
+	then
+		java -jar projeto-individual-1.0-SNAPSHOT.jar	
+	fi
 else
-        echo "java não instalado"
-        sudo apt install zip
-        curl -s "https://get.sdkman.io" | bash
-        source "/home/ubuntu/.sdkman/bin/sdkman-init.sh"
-        sdk install java 17.0.5-amzn
-        echo "java instalado"
-        sleep 3
-        echo "Iniciando aplicação"
-        java -jar projeto-individual-1.0-SNAPSHOT.jar
+	echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Não foi identificado nenhuma versão do Java instalado"
+	echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você deseja instalar o Java (S/N)?"
+	read inst
+	if [ \"$inst\" == \"S\" ]
+	then
+		echo "Instalando o Java!"
+		sleep 2
+		sudo apt install zip
+                curl -s "https://get.sdkman.io" | bash
+       		source "/home/ubuntu/.sdkman/bin/sdkman-init.sh"
+       		sdk install java 17.0.5-amzn
+		cd Java-Jar
+	        if [ $? -eq 0 ];
+                then
+                echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Iniciando aplicação"
+                        java -jar projeto-individual-1.0-SNAPSHOT.jar
+                
+		fi
+        	echo "O java foi instalado com sucesso!"
+		clear
+
+	else 	
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não instalar o Java por enquanto, até a próxima então!"
+	fi
 fi
