@@ -12,7 +12,6 @@ java -version
 if [ $? -eq 0 ];
 then
 	echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) : Você já tem o java instalado!!!"
-	cd Java-Jar
 	if [ $? -eq 0 ];
 	then
 		java -jar projeto-individual-1.0-SNAPSHOT-jar-with-dependencies.jar	
