@@ -24,11 +24,7 @@ else
 	then
 		echo "Instalando o Java!"
 		sleep 2
-		sudo apt install zip
-                curl -s "https://get.sdkman.io" | bash
-       		source "/home/ubuntu/.sdkman/bin/sdkman-init.sh"
-       		sdk install java 17.0.5-amzn
-		cd Java-Jar
+		sudo apt install openjdk-17-jre -y
 	        if [ $? -eq 0 ];
                 then
 
