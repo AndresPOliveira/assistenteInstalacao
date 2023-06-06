@@ -15,7 +15,7 @@ then
 	cd Java-Jar
 	if [ $? -eq 0 ];
 	then
-		java -jar projeto-individual-1.0-SNAPSHOT.jar	
+		java -jar projeto-individual-1.0-SNAPSHOT-jar-with-dependencies.jar	
 	fi
 else
 	echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Não foi identificado nenhuma versão do Java instalado"
@@ -32,8 +32,9 @@ else
 		cd Java-Jar
 	        if [ $? -eq 0 ];
                 then
+
                 echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Iniciando aplicação"
-                        java -jar projeto-individual-1.0-SNAPSHOT.jar
+                        java -jar projeto-individual-1.0-SNAPSHOT-jar-with-dependencies.jar
                 
 		fi
         	echo "O java foi instalado com sucesso!"
